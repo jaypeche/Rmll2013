@@ -130,9 +130,10 @@ Automation for DIY systems
 \begin{column}[l]{0.5\textwidth}
 \textbf{Commercial products :}
 \begin{itemize}
-\item Expensive
-\item Closed
-\item No Fun !
+\item[\Large\smiley] Ready to use
+\item[\Large\frownie] Expensive
+\item[\Large\frownie] Closed \& No Fun !
+
 \end{itemize}
 \end{column}
 \begin{column}[r]{0.5\textwidth}
@@ -146,9 +147,9 @@ Automation for DIY systems
 \begin{column}[l]{0.5\textwidth}
 \textbf{DIY / Open Hardware :}
 \begin{itemize}
-\item Flexible
-\item Time Consuming
-\item Require electronic and programming skills
+\item[\Large\smiley]Flexible
+\item[\Large\smiley]Fun but Time Consuming
+\item[\Large\frownie] Require electronic and programming skills
 \end{itemize}
 \end{column}
 \begin{column}[r]{0.5\textwidth}
@@ -164,7 +165,9 @@ Automation for DIY systems
 \begin{column}[l]{0.5\textwidth}
 \textbf{Home Automation software :}
 \begin{itemize}
-\item Not adapted
+\item[\Large\smiley] User friendly
+\item[\Large\frownie] Application specific
+
 \end{itemize}
 \end{column}
 \begin{column}[r]{0.5\textwidth}
@@ -176,36 +179,142 @@ Automation for DIY systems
 
 \begin{columns}
 \begin{column}[l]{0.5\textwidth}
-\textbf{DIY / Embed software  :}
+\textbf{Embed software Framework  :}
 \begin{itemize}
-\item Hardware specific
+\item[\Large\smiley] Customizable
+
+\item[\Large\frownie] Hardware specific
+\item[\Large\frownie] Low level
+
 \end{itemize}
 \end{column}
 \begin{column}[r]{0.5\textwidth}
 \begin{figure}
-\includegraphics[width=\columnwidth]{./figures/kit.jpg}
+\includegraphics[width=0.9\columnwidth]{./figures/modkit.png}
 \end{figure}
 \end{column}
 \end{columns}
 \end{frame}
 
 \begin{frame}{OpenplacOS}
-\begin{block}{OpenplacOS is designed to be :}
+\begin{block}{OpenplacOS : }
+Flexibility of Open Hardware with the power of home Automation.
 \begin{itemize}
-\item Flexible
-\item Modular
-\item Hardware independant
-\item Easy to configure \& to use
+\item[\Large\smiley] Usability of an high level home automation software
+\item[\Large\smiley] Application agnostic 
+\item[\Large\smiley] Customizability
+\item[\Large\smiley] Fun !
 \end{itemize}
 \end{block}
 \end{frame}
 
-\section{Workflow}
+\section{Principles}
+\begin{frame}{Hardware}
+\includegraphics[width=1\columnwidth]{./figures/hardware.png}
+
+user devices + host cpu (raspi) + arduino + sensors
+
+faire colone
+\end{frame}
+
+\begin{frame}{Hardware Abstraction}
+\begin{columns}
+\begin{column}[l]{0.5\textwidth}
+Openplacos \\
+\includegraphics[width=0.3\columnwidth]{./figures/raspi.jpg}
+\end{column}
+\begin{column}[r]{0.5\textwidth}
+Real World
+\includegraphics[width=\columnwidth]{./figures/HWworld.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{FrontEnd}
+\begin{columns}
+\begin{column}[l]{0.5\textwidth}
+Interface
+\end{column}
+\begin{column}[r]{0.5\textwidth}
+Openplacos \\
+\includegraphics[width=0.3\columnwidth]{./figures/raspi.jpg}
+\end{column}
+\end{columns}
+\end{frame}
 
 \section{Software Architecture}
+
+\begin{frame}{Software architecture}
+\textbf{3 kind of programs:}
+\begin{enumerate}
+\item Components
+\begin{itemize}
+\item[$\Rightarrow$] Abstract Hardware (Arduino, Sensors)
+\item[$\Rightarrow$] Process control (PID controller, Automation)
+\end{itemize}
+\item Clients
+\begin{itemize}
+\item[$\Rightarrow$] User Interfaces (Web, CLI)
+\end{itemize}
+\item Core Server
+\begin{itemize}
+\item[$\Rightarrow$] Component glue
+\item[$\Rightarrow$] API for clients
+\end{itemize}
+
+\end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}{Components}
+A component is a program which has a specific target. It has inputs and outputs. For example:
+\begin{itemize}
+\item[$\Rightarrow$] Temperature component: convert raw analog value to celcius
+\item[$\Rightarrow$] PID controler: control an actuator according to a consign
+\item[$\Rightarrow$] RF relay: manage RF remote switch protocol and mapping
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Components}
+Component inputs and outputs are bind with OpenplacOS server using D-Bus. 
+ \begin{itemize}
+\item[$\Rightarrow$] Can be written in any langage
+\item[$\Rightarrow$] Can run standalone (easy debug)
+\end{itemize}
+DESSIN
+\end{frame}
+
+\begin{frame}{Components}
+Code review
+\end{frame}
+
+\begin{frame}{Clients}
+Screenshot.
+Client can access to serveur with an API REST and an OAuth2 authentification.
+\end{frame}
+
+\begin{frame}{Core server}
+Slide gagnante -- L'assemblage créé l'application
+\end{frame}
 
 \section{Demo}
 
 \section{Conclusion}
+\begin{frame}{Project status}
+OpenplacOS is actually still in development:
+ \begin{itemize}
 
+\item Core server is functional and stable. Usable in daily life.
+\item Still WIP in web interface and components library.
+\item Packages avalaibles for ubuntu, debian, archlinux. 
+\end{itemize}
+\end{frame}
+\begin{frame}{Perspectives}
+2 active developments:
+ \begin{itemize}
+\item[$\Rightarrow$] Arduino shield for pH EC and temperature
+\item[$\Rightarrow$] Graphical interface for config
+\end{itemize}
+\end{frame}
 \end{document}
